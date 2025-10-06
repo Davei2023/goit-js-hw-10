@@ -28,7 +28,6 @@ const options = {
   onClose(selectedDates) {
     const picked = selectedDates[0];
 
-    // перевірка на минуле
     if (!picked || picked.getTime() <= Date.now()) {
       userSelectedDate = null;
       refs.startBtn.disabled = true;
@@ -53,11 +52,9 @@ refs.startBtn.addEventListener('click', onStart);
 function onStart() {
   if (!userSelectedDate) return;
 
-  // заблокуємо керування на час відліку
   refs.startBtn.disabled = true;
   refs.input.disabled = true;
 
-  // одразу намалюємо перший «тік»
   tick();
 
   timerId = setInterval(tick, 1000);
@@ -71,7 +68,6 @@ function tick() {
     timerId = null;
     updateTimerView({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
-    // розблокуємо інпут для наступної дати; Start лишається неактивною
     refs.input.disabled = false;
     fp.setDate(new Date(), false);
 
@@ -98,7 +94,6 @@ function pad(val, min = 2) {
   return String(val).padStart(min, '0');
 }
 
-/** Готова утиліта з умови */
 function convertMs(ms) {
   const second = 1000;
   const minute = second * 60;
