@@ -1,9 +1,10 @@
-console.log('timer.js loaded');
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
 
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+
+console.log('timer.js loaded');
 
 const refs = {
   input: document.getElementById('datetime-picker'),
@@ -19,33 +20,45 @@ let timerId = null;
 
 refs.startBtn.disabled = true;
 
-/** Flatpickr options */
 const options = {
   enableTime: true,
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
+  allowInput: true,   // можна вводити текстом
+  clickOpens: true,   // явно відкривати по кліку
+  onChange(selectedDates) {
+    validateDate(selectedDates[0]);
+  },
   onClose(selectedDates) {
-    const picked = selectedDates[0];
-
-    if (!picked || picked.getTime() <= Date.now()) {
-      userSelectedDate = null;
-      refs.startBtn.disabled = true;
-      iziToast.error({
-        title: 'Invalid date',
-        message: 'Please choose a date in the future',
-        position: 'topRight',
-        timeout: 3000,
-      });
-      return;
-    }
-
-    userSelectedDate = picked;
-    refs.startBtn.disabled = false;
+    validateDate(selectedDates[0]);
   },
 };
 
 const fp = flatpickr(refs.input, options);
+
+// страхувальні відкриття календаря
+refs.input.addEventListener('click', () => fp && fp.open());
+refs.input.addEventListener('focus', () => fp && fp.open());
+
+function validateDate(picked) {
+  if (!picked || picked.getTime() <= Date.now()) {
+    userSelectedDate = null;
+    refs.startBtn.disabled = true;
+    // показувати тост лише якщо користувач реально щось обрав
+    if (picked) {
+      iziToast.error({
+        title: 'Invalid date',
+        message: 'Please choose a date in the future',
+        position: 'topRight',
+        timeout: 2500,
+      });
+    }
+    return;
+  }
+  userSelectedDate = picked;
+  refs.startBtn.disabled = false;
+}
 
 refs.startBtn.addEventListener('click', onStart);
 
@@ -55,8 +68,7 @@ function onStart() {
   refs.startBtn.disabled = true;
   refs.input.disabled = true;
 
-  tick();
-
+  tick(); // перший рендер
   timerId = setInterval(tick, 1000);
 }
 
@@ -68,8 +80,8 @@ function tick() {
     timerId = null;
     updateTimerView({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
-    refs.input.disabled = false;
-    fp.setDate(new Date(), false);
+    refs.input.disabled = false;       // дозволяємо вибрати нову дату
+    fp.setDate(new Date(), false);     // повертаємо календар до now
 
     iziToast.success({
       title: 'Done',
@@ -94,6 +106,7 @@ function pad(val, min = 2) {
   return String(val).padStart(min, '0');
 }
 
+// Готова утиліта з умови
 function convertMs(ms) {
   const second = 1000;
   const minute = second * 60;

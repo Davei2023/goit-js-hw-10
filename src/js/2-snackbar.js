@@ -1,6 +1,8 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
+console.log('snackbar.js loaded');
+
 const form = document.getElementById('promise-form');
 
 form.addEventListener('submit', e => {
