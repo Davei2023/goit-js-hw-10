@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>HW-10 | Promises Snackbar</title>
+    <link rel="stylesheet" href="./src/css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🔔 Promises Snackbar</h1>
+        <a class="link" href="./1-timer.html">← Завдання 1</a>
+      </header>
+
+      <form class="form" id="promise-form">
+        <label>
+          Delay (ms)
+          <input type="number" name="delay" min="0" step="100" placeholder="наприклад, 1000" required />
+        </label>
+
+        <fieldset>
+          <legend>State</legend>
+          <label>
+            <input type="radio" name="state" value="fulfilled" required />
+            Fulfilled
+          </label>
+          <label>
+            <input type="radio" name="state" value="rejected" required />
+            Rejected
+          </label>
+        </fieldset>
+
+        <button type="submit">Create notification</button>
+      </form>
+    </div>
+
+    <script type="module" src="./src/js/2-snackbar.js"></script>
+  </body>
+</html>

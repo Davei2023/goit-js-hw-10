@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>HW-10 | Timer</title>
+    <link rel="stylesheet" href="./src/css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>⏳ Countdown Timer</h1>
+        <a class="link" href="./2-snackbar.html">→ Завдання 2</a>
+      </header>
+
+      <div class="controls">
+        <input type="text" id="datetime-picker" placeholder="Оберіть дату та час" />
+        <button type="button" data-start disabled>Start</button>
+      </div>
+
+      <div class="timer">
+        <div class="field">
+          <span class="value" data-days>00</span>
+          <span class="label">Days</span>
+        </div>
+        <div class="field">
+          <span class="value" data-hours>00</span>
+          <span class="label">Hours</span>
+        </div>
+        <div class="field">
+          <span class="value" data-minutes>00</span>
+          <span class="label">Minutes</span>
+        </div>
+        <div class="field">
+          <span class="value" data-seconds>00</span>
+          <span class="label">Seconds</span>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./src/js/1-timer.js"></script>
+  </body>
+</html>
