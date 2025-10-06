@@ -11,11 +11,28 @@
     <link rel="stylesheet" crossorigin href="/goit-js-hw-10/assets/styles-BEmVWWjs.css">
   </head>
   <body>
+    <header class="header">
+      <div class="container">
+        <nav class="nav">
+          <ul class="nav-list">
+            <li class="nav-item"><a class="nav-link" href="./1-timer.html">Timer</a></li>
+            <li class="nav-item"><a class="nav-link active" href="./2-snackbar.html">Snackbar</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
     <div class="container">
       <form class="form" id="promise-form">
         <label>
           Delay (ms)
-          <input type="number" name="delay" min="0" step="100" placeholder="наприклад, 1000" required />
+          <input
+            type="number"
+            name="delay"
+            min="0"
+            step="100"
+            placeholder="наприклад, 1000"
+            required />
         </label>
 
         <fieldset>
@@ -27,7 +44,6 @@
         <button type="submit">Create notification</button>
       </form>
     </div>
-<a class="back-link" href="./index.html">Go back</a>
 
   </body>
 </html>

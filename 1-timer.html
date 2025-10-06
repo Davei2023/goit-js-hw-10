@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HW-10 | Timer</title>
+    <!-- Підняти календар над усім, на випадок перекриття -->
+    <style>
+      #datetime-picker { position: relative; z-index: 2; }
+      .flatpickr-calendar { z-index: 999999 !important; }
+    </style>
     <script type="module" crossorigin src="/goit-js-hw-10/1-timer.js"></script>
     <link rel="modulepreload" crossorigin href="/goit-js-hw-10/assets/modulepreload-polyfill-B5Qt9EMX.js">
     <link rel="modulepreload" crossorigin href="/goit-js-hw-10/assets/vendor-BYNj076e.js">
@@ -11,6 +16,17 @@
     <link rel="stylesheet" crossorigin href="/goit-js-hw-10/assets/styles-BEmVWWjs.css">
   </head>
   <body>
+    <header class="header">
+      <div class="container">
+        <nav class="nav">
+          <ul class="nav-list">
+            <li class="nav-item"><a class="nav-link active" href="./1-timer.html">Timer</a></li>
+            <li class="nav-item"><a class="nav-link" href="./2-snackbar.html">Snackbar</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
     <div class="container">
       <div class="controls">
         <input type="text" id="datetime-picker" placeholder="Оберіть дату та час" />
@@ -18,13 +34,24 @@
       </div>
 
       <div class="timer">
-        <div class="field"><span class="value" data-days>00</span><span class="label">Days</span></div>
-        <div class="field"><span class="value" data-hours>00</span><span class="label">Hours</span></div>
-        <div class="field"><span class="value" data-minutes>00</span><span class="label">Minutes</span></div>
-        <div class="field"><span class="value" data-seconds>00</span><span class="label">Seconds</span></div>
+        <div class="field">
+          <span class="value" data-days>00</span>
+          <span class="label">Days</span>
+        </div>
+        <div class="field">
+          <span class="value" data-hours>00</span>
+          <span class="label">Hours</span>
+        </div>
+        <div class="field">
+          <span class="value" data-minutes>00</span>
+          <span class="label">Minutes</span>
+        </div>
+        <div class="field">
+          <span class="value" data-seconds>00</span>
+          <span class="label">Seconds</span>
+        </div>
       </div>
     </div>
 
-    <a class="back-link" href="./index.html">Go back</a>
   </body>
 </html>
