@@ -88,7 +88,7 @@ function tick() {
 }
 
 function updateTimerView({ days, hours, minutes, seconds }) {
-  refs.days.textContent = pad(days, 2);     // дні можуть бути >2 цифр — pad просто гарантує мінімум 2
+  refs.days.textContent = pad(days, 2);
   refs.hours.textContent = pad(hours, 2);
   refs.minutes.textContent = pad(minutes, 2);
   refs.seconds.textContent = pad(seconds, 2);
